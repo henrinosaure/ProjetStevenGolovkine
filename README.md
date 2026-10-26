@@ -6,4 +6,7 @@ Bactéries résistantes ou non avec certains gènes présents. k-nn pour voir si
 Variables nécessaires par observation : nom de la bactérie, présence de certains gènes (gène A, B, C, D, etc.), résistance à un ou plusieurs antibiotiques.
 
 NCBI_AMR : https://www.ncbi.nlm.nih.gov/pathogens/isolates/
+garder seulement colonnes : "BioSample"            "Organism group"       "Scientific name"     "Antibiotic"     "Resistance phenotype"
+
 NCBI_AST : https://www.ncbi.nlm.nih.gov/pathogens/ast/
+garder seulement colonnes : "#BioSample"           "AMR genotypes"
