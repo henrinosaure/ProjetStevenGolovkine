@@ -27,18 +27,19 @@ NCBI_genes <- NCBI_filtered %>%
 # Enlever les donnees avec des gènes trop niches (apparaissent moins de 10)
 
 genes_to_remove <- NCBI_genes %>%
-  distinct(`#BioSample`, gene) %>%
+  distinct(`BioSample`, gene) %>%
   count(gene) %>%
+  # Changer parametre à côté de n pour seuil de fois que le gêne doit être la pour être gardé
   filter(n < 10)
 
-antibio_to_remove <- NCBI_genes %>%
-  distinct(`#BioSample`, gene) %>%
-  count(gene) %>%
-  filter(n < 10)
+
+antibio_to_keep <- NCBI_genes %>%
+  distinct(BioSample, Antibiotic) %>%
+  count(Antibiotic) %>%
+  # Changer n pour nombre d'antibiotiques à garder
+  slice_max(n, n = 25, with_ties = FALSE)
 
 NCBI_genes_filtered <- NCBI_genes %>%
-  filter(!(gene %in% genes_to_remove$gene))
-
-
-# Enlever lignes identiques??
-
+  filter(!(gene %in% genes_to_remove$gene)) %>%
+  filter(Antibiotic %in% antibio_to_keep$Antibiotic) %>%
+  distinct(BioSample, Antibiotic, gene, .keep_all = TRUE)
