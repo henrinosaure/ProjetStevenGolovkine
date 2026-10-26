@@ -13,7 +13,12 @@ NCBI_filtered <- NCBI_AST %>%
   filter(`BioSample` %in% NCBI_AMR$`BioSample`) %>%
   filter(`Resistance phenotype` %in% c("susceptible", "resistant")) %>%
   select(`BioSample`, `Organism group`, Antibiotic, `Resistance phenotype`) %>%
-  left_join(NCBI_AMR %>% select(`BioSample`, `AMR genotypes`), by = "BioSample")
+  left_join(NCBI_AMR %>% select(`BioSample`, `AMR genotypes`), by = "BioSample"
+  )%>%
+  filter(
+    !is.na(`AMR genotypes`),
+    trimws(`AMR genotypes`) != ""
+  )
 
 # Split la banque de donnees pour chaque gene
 NCBI_genes <- NCBI_filtered %>%
@@ -43,5 +48,3 @@ NCBI_genes_filtered <- NCBI_genes %>%
   filter(!(gene %in% genes_to_remove$gene)) %>%
   filter(Antibiotic %in% antibio_to_keep$Antibiotic) %>%
   distinct(BioSample, Antibiotic, gene, .keep_all = TRUE)
-
-#
