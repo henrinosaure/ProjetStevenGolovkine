@@ -7,6 +7,7 @@ Bactéries résistantes ou non avec certains gènes présents → créer des gro
 
 Variables nécessaires par observation : nom de la bactérie, présence de certains gènes (gène A, B, C, D, etc.), résistance à un ou plusieurs antibiotiques.
 
+à mettre dans un fichier Data/ :
 NCBI_AMR : https://www.ncbi.nlm.nih.gov/pathogens/isolates/
 garder seulement colonnes : "BioSample"           "AMR genotypes"
 
