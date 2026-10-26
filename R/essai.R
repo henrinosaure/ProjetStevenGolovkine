@@ -24,14 +24,14 @@ NCBI_genes <- NCBI_filtered %>%
     names = c("gene", "detection")
   )
 
-# Enlever les donnees avec des gènes trop niches (apparaissent moins de 10)
+# Enlever les donnees avec des gènes trop niches (apparaissent moins de 10 fois)
+# Garder seulement les 25 antibiotiques les plus fréquents
 
 genes_to_remove <- NCBI_genes %>%
   distinct(`BioSample`, gene) %>%
   count(gene) %>%
   # Changer parametre à côté de n pour seuil de fois que le gêne doit être la pour être gardé
   filter(n < 10)
-
 
 antibio_to_keep <- NCBI_genes %>%
   distinct(BioSample, Antibiotic) %>%
@@ -43,3 +43,5 @@ NCBI_genes_filtered <- NCBI_genes %>%
   filter(!(gene %in% genes_to_remove$gene)) %>%
   filter(Antibiotic %in% antibio_to_keep$Antibiotic) %>%
   distinct(BioSample, Antibiotic, gene, .keep_all = TRUE)
+
+#
