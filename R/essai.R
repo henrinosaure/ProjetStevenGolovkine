@@ -1,12 +1,44 @@
-install.packages("tidyverse")
+#install.packages("tidyverse")
 library(tidyverse)
 
-NCBI_AMR <- read_tsv("Data/NCBI_AMR.tsv")
-NCBI_AST <- read_tsv("Data/NCBI_AST.tsv")
+NCBI_AST <- read_tsv("Data/NCBI_AST.tsv") %>%
+  rename_with(~ sub("^#BioSample$", "BioSample", .x))
 
-NCBI_AST_filtered <- NCBI_AST %>%
-  filter(`#BioSample` %in% NCBI_AMR$`#BioSample`) %>%
+NCBI_AMR <- read_tsv("Data/NCBI_AMR.tsv") %>%
+  rename_with(~ sub("^#BioSample$", "BioSample", .x))
+
+# Filtre et combine les 2 banques de donnees, gardant les colonnes :
+# BioSample, Organism Group, Antibiotic, Resistance phenotype et AMR Genotypes
+NCBI_filtered <- NCBI_AST %>%
+  filter(`BioSample` %in% NCBI_AMR$`BioSample`) %>%
   filter(`Resistance phenotype` %in% c("susceptible", "resistant")) %>%
-  select(`#BioSample`, `Organism group`, Antibiotic, `Resistance phenotype`) %>%
-  left_join(NCBI_AMR %>%
-        select(`#BioSample`, `AMR genotypes`), by = "#BioSample")
+  select(`BioSample`, `Organism group`, Antibiotic, `Resistance phenotype`) %>%
+  left_join(NCBI_AMR %>% select(`BioSample`, `AMR genotypes`), by = "BioSample")
+
+# Split la banque de donnees pour chaque gene
+NCBI_genes <- NCBI_filtered %>%
+  separate_longer_delim(`AMR genotypes`, delim = ",") %>%
+  separate_wider_delim(
+    `AMR genotypes`,
+    delim = "=",
+    names = c("gene", "detection")
+  )
+
+# Enlever les donnees avec des gènes trop niches (apparaissent moins de 10)
+
+genes_to_remove <- NCBI_genes %>%
+  distinct(`#BioSample`, gene) %>%
+  count(gene) %>%
+  filter(n < 10)
+
+antibio_to_remove <- NCBI_genes %>%
+  distinct(`#BioSample`, gene) %>%
+  count(gene) %>%
+  filter(n < 10)
+
+NCBI_genes_filtered <- NCBI_genes %>%
+  filter(!(gene %in% genes_to_remove$gene))
+
+
+# Enlever lignes identiques??
+
