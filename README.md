@@ -5,13 +5,15 @@ Bactéries résistantes ou non avec certains gènes présents → créer des gro
 
 Variables nécessaires par observation : nom de la bactérie, présence de certains gènes (gène A, B, C, D, etc.), résistance à un ou plusieurs antibiotiques.
 
-à mettre dans un fichier Data/ :
+**à mettre dans un fichier Data/ :**
+
 **Antimicrobial Resistance (le gêne)**
-1. NCBI_AMR : https://www.ncbi.nlm.nih.gov/pathogens/isolates/
-2. garder seulement colonnes : "BioSample"           "AMR genotypes"
+NCBI_AMR : https://www.ncbi.nlm.nih.gov/pathogens/isolates/
+garder seulement colonnes : "BioSample"           "AMR genotypes"
+
 **Antibiotic sensibility test**
-1. NCBI_AST : https://www.ncbi.nlm.nih.gov/pathogens/ast/
-2. garder seulement colonnes : "BioSample"            "Organism group"       "Scientific name"     "Antibiotic"     "Resistance phenotype"
+NCBI_AST : https://www.ncbi.nlm.nih.gov/pathogens/ast/
+garder seulement colonnes : "BioSample"            "Organism group"       "Scientific name"     "Antibiotic"     "Resistance phenotype"
 
 **Objectifs court-terme** 
 1. Trouver comment faire une ACP à partir de des données qualitatives (ACM? Analyse en correspondances multiples?).
