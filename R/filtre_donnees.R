@@ -1,6 +1,10 @@
 #install.packages("tidyverse")
 library(tidyverse)
 
+# =============================================================================
+# ---------- Lecture et clean/réorganisation des fichiers de données ----------
+# =============================================================================
+
 NCBI_AST <- read_tsv("Data/NCBI_AST.tsv") %>%
   rename_with(~ sub("^#BioSample$", "BioSample", .x))
 
@@ -20,6 +24,7 @@ NCBI_filtered <- NCBI_AST %>%
     trimws(`AMR genotypes`) != ""
   )
 
+
 # Split la banque de donnees pour chaque gene
 NCBI_genes <- NCBI_filtered %>%
   separate_longer_delim(`AMR genotypes`, delim = ",") %>%
@@ -28,6 +33,11 @@ NCBI_genes <- NCBI_filtered %>%
     delim = "=",
     names = c("gene", "detection")
   )
+
+# =============================================================================
+# -------------------- Filtration pour données de qualité ---------------------
+# =============================================================================
+
 
 # Enlever les donnees avec des gènes trop niches (apparaissent moins de 10 fois)
 # Garder seulement les 25 antibiotiques les plus fréquents
@@ -53,6 +63,30 @@ NCBI_genes_filtered <- NCBI_genes %>%
   filter(!(gene %in% genes_to_remove$gene)) %>%
   filter(Antibiotic %in% antibio_to_keep$Antibiotic) %>%
   distinct(BioSample, Antibiotic, gene, .keep_all = TRUE)
+
+# =============================================================================
+# -------------------- préparer les données pour l'ACM ------------------------
+# =============================================================================
+
+# Ciprofloxacin est l'antibiotique le plus frequent dans la banque filtrée
+# On va donc le garder pour la 1re analyse
+genes_ciprofloxacin <- NCBI_genes_filtered %>%
+  filter(Antibiotic == "ciprofloxacin")
+
+
+# On veut mettre la banque en mode large pour l'ACM : 
+# La colonne Resistance phenotype est en binaire : susceptible = 0 et resistant = 1
+# Une colonne désigne la présence ou non du gene
+
+genes_ACM_ciprofloxacin_wide <- genes_ciprofloxacin %>%
+  mutate(`Resistance phenotype` = if_else(`Resistance phenotype` == "susceptible", 0, 1)) %>%
+  mutate(presence = 1) %>%
+  pivot_wider(
+    id_cols = c(BioSample, `Resistance phenotype`),
+    names_from = gene,
+    values_from = presence,
+    values_fill = 0
+  )
 
 # =============================================================================
 # --------- creer banque d'entrainement et banque de validation/test ----------
