@@ -17,5 +17,10 @@ garder seulement colonnes : "BioSample"            "Organism group"       "Scien
 
 
 **Objectifs court-terme**
+Trouver comment faire une ACP à partir de des données qualitatives (ACM? Analyse en correspondances multiples?).
+Voir si on veut juste se concentrer sur un anti-biotique pour le début, puis continuer la méthode avec d'autres antibiotiques dans le futur.
+Voir si y'a d'autres façons de filtrer les données. **Créer une banque de données de validation**. Trouver comment entreposer la banque de données de validation pour qu'elle ne change pas entre deux essais.
 
-
+**Objectifs long-terme**
+ACM pour trouver les gènes les plus importants pour les antibiotiques.
+k-means pour déterminer si tu es résistant ou non à un antibiotique sachant les gènes que tu as/as pas.
