@@ -14,12 +14,12 @@ NCBI_AST : https://www.ncbi.nlm.nih.gov/pathogens/ast/
 garder seulement colonnes : "BioSample"            "Organism group"       "Scientific name"     "Antibiotic"     "Resistance phenotype"
 
 **Objectifs court-terme** 
-• Trouver comment faire une ACP à partir de des données qualitatives (ACM? Analyse en correspondances multiples?).
-• Voir si on veut juste se concentrer sur un anti-biotique pour le début, puis continuer la méthode avec d'autres antibiotiques dans le futur.
-• Voir si y'a d'autres façons de filtrer les données. 
-• Déterminer comment on veut traiter les différentes mutations des gènes
-• Préparer les données pour L'ACM
-• Délibérer sur comment faire en sorte que la banque de données de validation/test pour qu'elle ne change pas entre deux essais sans biais. (La façon que je l'ai fait pourrait entraîner un biais peut-être jsp)
+1. Trouver comment faire une ACP à partir de des données qualitatives (ACM? Analyse en correspondances multiples?).
+2. Voir si on veut juste se concentrer sur un anti-biotique pour le début, puis continuer la méthode avec d'autres antibiotiques dans le futur.
+3. Voir si y'a d'autres façons de filtrer les données. 
+4. Déterminer comment on veut traiter les différentes mutations des gènes
+5. Préparer les données pour L'ACM
+6. Délibérer sur comment faire en sorte que la banque de données de validation/test pour qu'elle ne change pas entre deux essais sans biais. (La façon que je l'ai fait pourrait entraîner un biais peut-être jsp)
 
 **Objectifs long-terme**
 1. Faire la préparation des données
