@@ -7,11 +7,11 @@ Variables nécessaires par observation : nom de la bactérie, présence de certa
 
 à mettre dans un fichier Data/ :
 **Antimicrobial Resistance (le gêne)**
-NCBI_AMR : https://www.ncbi.nlm.nih.gov/pathogens/isolates/
-garder seulement colonnes : "BioSample"           "AMR genotypes"
+1. NCBI_AMR : https://www.ncbi.nlm.nih.gov/pathogens/isolates/
+2. garder seulement colonnes : "BioSample"           "AMR genotypes"
 **Antibiotic sensibility test**
-NCBI_AST : https://www.ncbi.nlm.nih.gov/pathogens/ast/
-garder seulement colonnes : "BioSample"            "Organism group"       "Scientific name"     "Antibiotic"     "Resistance phenotype"
+1. NCBI_AST : https://www.ncbi.nlm.nih.gov/pathogens/ast/
+2. garder seulement colonnes : "BioSample"            "Organism group"       "Scientific name"     "Antibiotic"     "Resistance phenotype"
 
 **Objectifs court-terme** 
 1. Trouver comment faire une ACP à partir de des données qualitatives (ACM? Analyse en correspondances multiples?).
