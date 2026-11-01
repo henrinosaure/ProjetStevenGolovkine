@@ -1,6 +1,4 @@
 # analysededonnees
-Projet d'analyse de données Henrizz, Busty J et Colgate
-
 Question: **Pouvons-nous déterminer la résistance d'une bactérie à un antibiotique particulier, sachant ses gènes de résistance?**
 
 Bactéries résistantes ou non avec certains gènes présents → créer des groupes avec ACP/k-means? k-nn pour voir si nouvelle bactérie avec certains gènes présents est résistante ou non
