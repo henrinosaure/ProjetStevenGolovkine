@@ -40,7 +40,7 @@ genes_to_remove <- NCBI_genes %>%
   # Changer parametre à côté de n pour seuil de fois que le gêne doit être la pour être gardé
   filter(n < 10)
 
-# Gardes seulement les 25 antibiotiques les plus frequents
+# Garde seulement les 25 antibiotiques les plus fréquents
 antibio_to_keep <- NCBI_genes %>%
   distinct(BioSample, Antibiotic) %>%
   count(Antibiotic) %>%
@@ -60,6 +60,7 @@ NCBI_genes_filtered <- NCBI_genes %>%
 
 pattern_validation <- c(1, 1, 1, rep(0, 17))
 pattern_test <- c(rep(0, 17), 1, 1, 1)
+pattern_entrainement <- c(rep(0, 3), rep(1, 14), rep(0, 3))
 
 
 banque_validation <- NCBI_genes_filtered %>%
@@ -71,5 +72,14 @@ banque_validation <- NCBI_genes_filtered %>%
 banque_test <- NCBI_genes_filtered %>%
   filter(rep(pattern_test, length.out = n())==1)
 
+# banque d'entrainement est toutes les donnees sauf celles de test/validation
+
+banque_entrainement <- NCBI_genes_filtered %>%
+  filter(rep(pattern_entrainement, length.out = n())==1)
+
+# Écrit les banques de données dans Data/
+write.csv(banque_validation, file = "Data/banque_validation")
+write.csv(banque_test, file = "Data/banque_test")
+write.csv(banque_entrainement, file = "Data/banque_entrainement")
 
 
