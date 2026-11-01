@@ -36,13 +36,15 @@ garder seulement colonnes : "BioSample"            "Organism group"       "Scien
 3. Enlève tous les NA/données manquantes
 4. Split la banque de données par gène : Avant, chaque observation avait plusieurs gènes, Après, chaque observation a 1 gène (tidy)
 5. Garder seulement les gènes qui ont 10 ou plus observations
-6. Garder seulement les antibiotiques qui ont 25 ou plus observations (on pourra considérer choisir seulement 1 antibiotique dans le futur)
+6. Garder seulement les 25 antibiotiques les plus fréquents
 7. Enlever les observations en double (à voir si on veut faire ça plus tôt dans la filtration, mais ça change pas grand chose)
 8. Créer et écrire les banques de données d'entrainement/test/validation
 
 
 
-
+# Autres notes
+ciprofloxacin est l'antibiotique le plus présent. Est-ce qu'on veut le choisir comme premier antibiotique à étudier?
+gène pas présent dans données =/= gène absent du génome... comment on traite ça?
 
 
 
