@@ -24,7 +24,6 @@ NCBI_filtered <- NCBI_AST %>%
     trimws(`AMR genotypes`) != ""
   )
 
-
 # Split la banque de donnees pour chaque gene
 NCBI_genes <- NCBI_filtered %>%
   separate_longer_delim(`AMR genotypes`, delim = ",") %>%
@@ -37,7 +36,6 @@ NCBI_genes <- NCBI_filtered %>%
 # =============================================================================
 # -------------------- Filtration pour données de qualité ---------------------
 # =============================================================================
-
 
 # Enlever les donnees avec des gènes trop niches (apparaissent moins de 10 fois)
 # Garder seulement les 25 antibiotiques les plus fréquents
@@ -73,7 +71,6 @@ NCBI_genes_filtered <- NCBI_genes %>%
 genes_ciprofloxacin <- NCBI_genes_filtered %>%
   filter(Antibiotic == "ciprofloxacin")
 
-
 # On veut mettre la banque en mode large pour l'ACM : 
 # La colonne Resistance phenotype est en binaire : susceptible = 0 et resistant = 1
 # Une colonne désigne la présence ou non du gene
@@ -96,24 +93,21 @@ pattern_validation <- c(1, 1, 1, rep(0, 17))
 pattern_test <- c(rep(0, 17), 1, 1, 1)
 pattern_entrainement <- c(rep(0, 3), rep(1, 14), rep(0, 3))
 
-
-banque_validation <- NCBI_genes_filtered %>%
+banque_validation <- genes_ACM_ciprofloxacin_wide %>%
   # ca choisit les 3 premiers sur 20 (15%) pour chaque chunk de 20 observations.
   # le length.out = n, ca fait juste dire de continuer le pattern sur tout le tibble
   # le == 1 dit de garder seulement les elements qui sont egals a 1 dans le pattern validation
   filter(rep(pattern_validation, length.out = n())==1)
 
-banque_test <- NCBI_genes_filtered %>%
+banque_test <- genes_ACM_ciprofloxacin_wide %>%
   filter(rep(pattern_test, length.out = n())==1)
 
 # banque d'entrainement est toutes les donnees sauf celles de test/validation
 
-banque_entrainement <- NCBI_genes_filtered %>%
+banque_entrainement <- genes_ACM_ciprofloxacin_wide %>%
   filter(rep(pattern_entrainement, length.out = n())==1)
 
 # Écrit les banques de données dans Data/
 write.csv(banque_validation, file = "Data/banque_validation")
 write.csv(banque_test, file = "Data/banque_test")
 write.csv(banque_entrainement, file = "Data/banque_entrainement")
-
-
