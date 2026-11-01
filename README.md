@@ -14,3 +14,8 @@ garder seulement colonnes : "BioSample"           "AMR genotypes"
 
 NCBI_AST : https://www.ncbi.nlm.nih.gov/pathogens/ast/
 garder seulement colonnes : "BioSample"            "Organism group"       "Scientific name"     "Antibiotic"     "Resistance phenotype"
+
+
+**Objectifs court-terme**
+
+
