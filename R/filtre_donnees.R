@@ -53,3 +53,23 @@ NCBI_genes_filtered <- NCBI_genes %>%
   filter(!(gene %in% genes_to_remove$gene)) %>%
   filter(Antibiotic %in% antibio_to_keep$Antibiotic) %>%
   distinct(BioSample, Antibiotic, gene, .keep_all = TRUE)
+
+# =============================================================================
+# --------- creer banque d'entrainement et banque de validation/test ----------
+# =============================================================================
+
+pattern_validation <- c(1, 1, 1, rep(0, 17))
+pattern_test <- c(rep(0, 17), 1, 1, 1)
+
+
+banque_validation <- NCBI_genes_filtered %>%
+  # ca choisit les 3 premiers sur 20 (15%) pour chaque chunk de 20 observations.
+  # le length.out = n, ca fait juste dire de continuer le pattern sur tout le tibble
+  # le == 1 dit de garder seulement les elements qui sont egals a 1 dans le pattern validation
+  filter(rep(pattern_validation, length.out = n())==1)
+
+banque_test <- NCBI_genes_filtered %>%
+  filter(rep(pattern_test, length.out = n())==1)
+
+
+
