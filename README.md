@@ -11,7 +11,7 @@ Bactéries résistantes ou non avec certains gènes présents → créer des gro
 
 **Objectifs long-terme**
 1. Faire la préparation des données : plis : ÉMILE
-2. ACM pour trouver les gènes les plus importants pour les antibiotiques : HENRY
+2. ACM pour trouver les gènes les plus importants pour les antibiotiques : HENRY : voir comment compenser pour la immense quantité de 0
 3. k-nn pour déterminer si tu es résistant ou non à un antibiotique sachant les gènes que tu as/as pas : BUSTY J
 4. Déterminer si l'analyse s'est bien fonctionnée avec un test : ÉMILE
 
