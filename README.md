@@ -5,15 +5,14 @@ Bactéries résistantes ou non avec certains gènes présents → créer des gro
 
 # To Do
 **Objectifs court-terme** 
-1. Apprendre la theorie sur l'ACM
+1. Apprendre la theorie sur l'ACM/AFC
 2. Déterminer comment on veut traiter les différentes mutations des gènes
 3. Sort la grosse banque avant la separation entrainement/test/validation
 
 **Objectifs long-terme**
 1. Faire la préparation des données
-2. ACM pour trouver les gènes les plus importants pour les antibiotiques.
+2. ACM ou AFC pour trouver les gènes les plus importants pour les antibiotiques.
 3. k-means pour déterminer si tu es résistant ou non à un antibiotique sachant les gènes que tu as/as pas.
-Variables nécessaires par observation : nom de la bactérie, présence de certains gènes (gène A, B, C, D, etc.), résistance à un ou plusieurs antibiotiques.
 4. Déterminer si l'analyse s'est bien fonctionnée avec un test
 
 # Données
