@@ -5,15 +5,15 @@ Bactéries résistantes ou non avec certains gènes présents → créer des gro
 
 # To Do
 **Objectifs court-terme** 
-1. Apprendre la theorie sur l'ACM/AFC
+1. Apprendre la theorie sur l'ACM
 2. Déterminer comment on veut traiter les différentes mutations des gènes
 3. Sort la grosse banque avant la separation entrainement/test/validation
 
 **Objectifs long-terme**
-1. Faire la préparation des données
-2. ACM ou AFC pour trouver les gènes les plus importants pour les antibiotiques.
-3. k-means pour déterminer si tu es résistant ou non à un antibiotique sachant les gènes que tu as/as pas.
-4. Déterminer si l'analyse s'est bien fonctionnée avec un test
+1. Faire la préparation des données : plis : ÉMILE
+2. ACM pour trouver les gènes les plus importants pour les antibiotiques : HENRY
+3. k-nn pour déterminer si tu es résistant ou non à un antibiotique sachant les gènes que tu as/as pas : BUSTY J
+4. Déterminer si l'analyse s'est bien fonctionnée avec un test : ÉMILE
 
 # Données
 **à mettre dans un fichier Data/ :**
@@ -40,4 +40,3 @@ garder seulement colonnes : "BioSample"            "Organism group"       "Scien
 ciprofloxacin est l'antibiotique le plus présent. Est-ce qu'on veut le choisir comme premier antibiotique à étudier?
 gène pas présent dans données =/= gène absent du génome... comment on traite ça?
 0 inflated regression? Voir si/comment c'est applicable
-AFC? (Analyse factorielle des correspondances)
