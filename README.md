@@ -40,3 +40,4 @@ garder seulement colonnes : "BioSample"            "Organism group"       "Scien
 # Autres notes
 ciprofloxacin est l'antibiotique le plus présent. Est-ce qu'on veut le choisir comme premier antibiotique à étudier?
 gène pas présent dans données =/= gène absent du génome... comment on traite ça?
+0 inflated regression? Voir si/comment c'est applicable
