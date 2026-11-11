@@ -41,7 +41,7 @@ NCBI_genes <- NCBI_filtered %>%
 # Garder seulement les 25 antibiotiques les plus fréquents
 
 # Trouve les genes a enlever en fonction de ceux qui sont les plus frequents 
-#(on garde seulement ceux qui ont 10 ou plus d'apparitions)
+# (on garde seulement ceux qui ont 10 ou plus d'apparitions)
 genes_to_remove <- NCBI_genes %>%
   distinct(`BioSample`, gene) %>%
   count(gene) %>%
@@ -108,6 +108,6 @@ banque_entrainement <- genes_ACM_ciprofloxacin_wide %>%
   filter(rep(pattern_entrainement, length.out = n())==1)
 
 # Écrit les banques de données dans Data/
-write.csv(banque_validation, file = "Data/banque_validation")
-write.csv(banque_test, file = "Data/banque_test")
-write.csv(banque_entrainement, file = "Data/banque_entrainement")
+write.csv(banque_validation, file = "Data/banque_validation.csv")
+write.csv(banque_test, file = "Data/banque_test.csv")
+write.csv(banque_entrainement, file = "Data/banque_entrainement.csv")
